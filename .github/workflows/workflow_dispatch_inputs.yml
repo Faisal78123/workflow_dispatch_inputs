@@ -9,8 +9,13 @@ on:
         description: 'Test scenario tags'  
 jobs:
   printInputs:
+    environment: testenv
     runs-on: ubuntu-latest
     steps:
+      env:
+        MYSECRET: ${{ secrets.MYSECRET }}
     - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
         echo "Tags: ${{ github.event.inputs.tags }}" 
+        echo "$MYSECRET"
+
