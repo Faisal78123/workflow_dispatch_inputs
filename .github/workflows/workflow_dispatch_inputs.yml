@@ -15,9 +15,9 @@ jobs:
 
         
     - run: |
-        cat >myscript '<< EOF
+        cat << EOF > myscript.sh
         echo "Log level: ${{ github.event.inputs.logLevel }}"
         echo "Tags: ${{ github.event.inputs.tags }}" 
         EOF
-        bash myscript
+        chmod +x myscript.sh && ./myscript.sh
 
