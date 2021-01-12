@@ -1,20 +1,26 @@
+name: Create a script.sh files with workflow dispatch inputs interpreted variables and run the script.
 on: 
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'     
+      variable1:
+        description: 'variable1-description'     
         required: true
-        default: 'warning'
-      tags:
-        description: 'Test scenario tags'  
+        default: 'value1'
+      variable2:
+        description: 'variable2-description'     
+        required: true
+        default: 'value2'
+
 jobs:
-  printInputs:
+  createscriptandruntheinputs:
     runs-on: ubuntu-latest
     steps:        
-    - run: |
+    - name: Create script.sh and run it.
+      run: |
         cat << EOF > myscript.sh
-        echo "Log level: ${{ github.event.inputs.logLevel }}"
-        echo "Tags: ${{ github.event.inputs.tags }}" 
+        echo "Variable 1's value is : ${{ github.event.inputs.variable1 }}"
+        echo "Variable 2's value is : ${{ github.event.inputs.variable2 }}"
         EOF
         chmod +x myscript.sh && ./myscript.sh
+
 
