@@ -12,6 +12,7 @@ jobs:
     environment: testenv
     runs-on: ubuntu-latest
     steps:
+    - shell: bash
       env:
         MYSECRET: ${{ secrets.MYSECRET }}
     - run: |
