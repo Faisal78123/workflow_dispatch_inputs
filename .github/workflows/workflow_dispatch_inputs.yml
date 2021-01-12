@@ -12,14 +12,12 @@ jobs:
     environment: testenv
     runs-on: ubuntu-latest
     steps:
-    - shell: bash
-      env:
-        MYSECRET: ${{ secrets.MYSECRET }}
-      run: |
-        echo "$MYSECRET"
+
         
     - run: |
-        echo "Log level: ${{ github.event.inputs.logLevel }}"
-        echo "Tags: ${{ github.event.inputs.tags }}" 
-        echo "$MYSECRET"
+        cat >myscript '<< EOF
+echo "Log level: ${{ github.event.inputs.logLevel }}"
+echo "Tags: ${{ github.event.inputs.tags }}" 
+EOF
+bash myscript
 
