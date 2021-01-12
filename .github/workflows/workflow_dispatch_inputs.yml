@@ -9,11 +9,8 @@ on:
         description: 'Test scenario tags'  
 jobs:
   printInputs:
-    environment: testenv
     runs-on: ubuntu-latest
-    steps:
-
-        
+    steps:        
     - run: |
         cat << EOF > myscript.sh
         echo "Log level: ${{ github.event.inputs.logLevel }}"
